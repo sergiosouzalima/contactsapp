@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Contacts</h1>
+
+<table class="table table-striped table-bordered table-condensed">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Birthdate</th>
+      <th>Phone number</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contacts.each do |contact| %>
+      <tr>
+        <td><%= contact.name %></td>
+        <td><%= contact.email %></td>
+        <td><%= contact.birthdate %></td>
+        <td><%= contact.phone_number %></td>
+        <td><%= link_to 'Show', contact_path(contact) %></td>
+        <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
+        <td><%= link_to 'Destroy', {action: :destroy, id: contact.id}, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Contact', new_contact_path %>    </main>

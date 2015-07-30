@@ -1,0 +1,6 @@
+
+<%= simple_form_for(@contact, url: contact_path, html: {method: :put} ) do |f| %>
+  <%= render partial: 'form_fields', locals: {f: f} %>
+<% end %>
+
+

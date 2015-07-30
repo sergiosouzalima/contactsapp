@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactsapp</title>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <header class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="navbar-inner">
+        <a href="http://github.com/rafaelfranca/simple_form-bootstrap">
+          <img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub">
+        </a>
+        <div class="container">
+          <div class="navbar-header">
+            <%= link_to "Contacts App - Text File As Database", root_path, :class => "navbar-brand" %>
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <main role="main">
+      <%= yield %>
+    </main>
+  </body>
+</html>
