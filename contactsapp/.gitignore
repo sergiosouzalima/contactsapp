@@ -11,3 +11,9 @@
 /log/*
 !/log/.keep
 /tmp
+/db/*
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+/public/assets
+/config/secrets.yml
