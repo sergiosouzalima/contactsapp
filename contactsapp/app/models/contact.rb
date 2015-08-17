@@ -2,7 +2,6 @@ class Contact
   include ActiveModel::Model
 
   attr_accessor :id, :name, :email, :birthdate, :phone_number, :deleted
-
   @@filepath = "db/#{ENV['RAILS_ENV']}.txt"
   DELETED_OPTIONS = %w(Y N)
   validates :name,         presence: true, length: { maximum: 50 }
@@ -83,16 +82,6 @@ class Contact
         self.errors.messages.merge!(contact.errors.messages)
       end
     end
-    #if self.destroy
-    #  contact = Contact.new( id: self.id, name: contact_to_update[:name],
-    #                        email: contact_to_update[:email], birthdate: contact_to_update[:birthdate],
-    #                        phone_number: contact_to_update[:phone_number] )
-    #  if contact.valid?
-    #    if contact.save
-    #      result = true
-    #    end
-    #  end
-    #end
     return result
   end
 
@@ -137,19 +126,6 @@ class Contact
     return [] unless record_to_find
     find_for_name = true
     contact = self.text_line_to_contact_instance( record_to_find, find_for_name )
-    #contact = []
-    #File.open(@@filepath,'r') do |file|
-    #  file.each_line do |line|
-    #    id, name, email, birthdate, phone_number, deleted = line.chomp.split(";")
-    #    if name == record_to_find && deleted == 'N'
-    #      contact << Contact.new( id: id,
-    #                             name: name,
-    #                             email: email,
-    #                             birthdate: birthdate,
-    #                             phone_number: phone_number )
-    #    end
-    #  end
-    #end
     return contact
   end
 
@@ -158,19 +134,6 @@ class Contact
     # Returns a contact instance
     return [] unless File.exist?(@@filepath)
     contact = self.text_line_to_contact_instance( record_to_find )
-    #contact = []
-    #File.open(@@filepath,'r') do |file|
-    #  file.each_line do |line|
-    #    id, name, email, birthdate, phone_number, deleted = line.chomp.split(";")
-    #    if id == (record_to_find ? record_to_find : id) && deleted == 'N'
-    #      contact << Contact.new( id: id,
-    #                             name: name,
-    #                             email: email,
-    #                             birthdate: birthdate,
-    #                             phone_number: phone_number )
-    #    end
-    #  end
-    #end
     return nil if contact.empty?
     return contact[0] if contact.length == 1
     return contact
